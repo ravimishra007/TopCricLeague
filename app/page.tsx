@@ -375,20 +375,19 @@ export default function Home() {
       {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative min-h-[100svh] mt-10 sm:mt-10 flex items-center justify-center overflow-hidden bg-[#1E1B4B]"
-
+        className="relative min-h-[100svh] mt-20 flex items-center justify-center overflow-hidden bg-[#0A0A0F]"
       >
         {/* Premium Background elements */}
         <div className="absolute inset-0 z-0">
           {/* Main gradient background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#1E1B4B] via-[#312E81] to-[#1E1B4B]"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0A0A0F] via-[#1A1A2E] to-[#0A0A0F]"></div>
           
           {/* Animated gradient orbs */}
-          <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-gradient-to-r from-violet-600/30 to-fuchsia-600/30 rounded-full blur-3xl animate-pulse-slow"></div>
-          <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-gradient-to-l from-blue-600/30 to-violet-600/30 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: "1s" }}></div>
+          <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-gradient-to-r from-blue-600/20 to-blue-800/20 rounded-full blur-3xl animate-pulse-slow"></div>
+          <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-gradient-to-l from-blue-800/20 to-blue-600/20 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: "1s" }}></div>
           
           {/* Mesh gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1E1B4B]/50 via-transparent to-[#1E1B4B]/50 backdrop-blur-[1px]"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F]/50 via-transparent to-[#0A0A0F]/50 backdrop-blur-[1px]"></div>
           
           {/* Subtle grid pattern */}
           <div className="absolute inset-0" style={{
@@ -401,15 +400,15 @@ export default function Home() {
           {!showSuccessScreen ? (
             <div className="text-white w-full">
               <div className="space-y-6 mb-12">
-                <h1 className="text-4xl sm:text-5xl md:text-6xl  font-bold animate-fade-in leading-tight">
+                <h1 className="text-4xl sm:text-5xl  font-bold animate-fade-in leading-tight">
                   Elevate Your{" "}
                   <span className="relative">
-                    <span className="relative z-10 bg-gradient-to-r from-violet-400 to-fuchsia-400 text-transparent bg-clip-text">Fantasy</span>
-                    <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-violet-400 to-fuchsia-400 blur-sm"></div>
+                    <span className="relative z-10 bg-gradient-to-r from-blue-400 to-blue-600 text-transparent bg-clip-text">Fantasy</span>
+                    <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-blue-600 blur-sm"></div>
                   </span>{" "}
                   <span className="relative">
-                    <span className="relative z-10 bg-gradient-to-r from-fuchsia-400 to-blue-400 text-transparent bg-clip-text">Cricket</span>
-                    <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-fuchsia-400 to-blue-400 blur-sm"></div>
+                    <span className="relative z-10 bg-gradient-to-r from-blue-600 to-blue-800 text-transparent bg-clip-text">Cricket</span>
+                    <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-blue-800 blur-sm"></div>
                   </span>{" "}
                   Experience
                 </h1>
@@ -419,7 +418,7 @@ export default function Home() {
               </div>
 
               {/* Form Container */}
-              <div className="w-full max-w-md mx-auto bg-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/10 shadow-[0_0_50px_rgba(139,92,246,0.1)]">
+              <div className="w-full max-w-md mx-auto bg-black/30 backdrop-blur-xl rounded-2xl p-8 border border-blue-500/20 shadow-[0_0_50px_rgba(59,130,246,0.1)]">
                 {!isOtpSent ? (
                   <div className="space-y-6">
                     <div className="relative">
@@ -433,12 +432,12 @@ export default function Home() {
                         }}
                         onFocus={() => setIsPhoneFocused(true)}
                         onBlur={() => setIsPhoneFocused(false)}
-                        className="w-full px-6 py-4 bg-white/5 border-2 border-white/10 focus:border-violet-500/50 rounded-xl text-white placeholder-gray-400 focus:outline-none transition-all duration-300 text-lg tracking-wide"
+                        className="w-full px-6 py-4 bg-black/40 border-2 border-blue-500/20 focus:border-blue-500/50 rounded-xl text-white placeholder-gray-400 focus:outline-none transition-all duration-300 text-lg tracking-wide"
                         placeholder="Enter your mobile number"
                         maxLength={10}
                       />
                       {isPhoneFocused && (
-                        <div className="absolute -top-3 left-4 px-2 bg-[#1E1B4B] text-xs text-gray-400">
+                        <div className="absolute -top-3 left-4 px-2 bg-[#0A0A0F] text-xs text-gray-400">
                           Mobile Number
                         </div>
                       )}
@@ -449,8 +448,8 @@ export default function Home() {
                       disabled={loading || !phone || phone.length !== 10}
                       className={`w-full py-4 rounded-xl font-medium text-lg flex items-center justify-center gap-3 transition-all duration-300 transform hover:translate-y-[-2px] ${
                         phone.length === 10
-                          ? "bg-gradient-to-r from-violet-500 to-fuchsia-500 hover:from-violet-600 hover:to-fuchsia-600 text-white shadow-[0_8px_20px_rgba(139,92,246,0.3)] hover:shadow-[0_10px_25px_rgba(139,92,246,0.4)]"
-                          : "bg-white/5 text-gray-400 cursor-not-allowed"
+                          ? "bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white shadow-[0_8px_20px_rgba(59,130,246,0.3)] hover:shadow-[0_10px_25px_rgba(59,130,246,0.4)]"
+                          : "bg-black/40 text-gray-400 cursor-not-allowed"
                       }`}
                     >
                       {loading ? (
@@ -462,25 +461,25 @@ export default function Home() {
                       )}
                     </button>
 
-                    {/* <div className="flex items-center justify-center mt-4 p-3 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10">
-                      <div className="flex items-center gap-3"> */}
-                        {/* <div className="bg-violet-500/10 p-2 rounded-lg">
-                          <FaShieldAlt className="text-violet-400" />
-                        </div> */}
-                        {/* <div className="text-left">
+                    {/* <div className="flex items-center justify-center mt-4 p-3 bg-black/40 backdrop-blur-sm rounded-xl border border-blue-500/20">
+                      <div className="flex items-center gap-3">
+                        <div className="bg-blue-500/10 p-2 rounded-lg">
+                          <FaShieldAlt className="text-blue-400" />
+                        </div>
+                        <div className="text-left">
                           <p className="text-gray-400 text-sm">
                             Your data is protected with bank-grade security.{" "}
                             <Link
                               href="/privacy-policy"
-                              className="text-violet-400 hover:text-violet-300 transition-colors underline-offset-4 hover:underline"
+                              className="text-blue-400 hover:text-blue-300 transition-colors underline-offset-4 hover:underline"
                             >
                               Privacy Policy
                             </Link>
                           </p>
-                        </div> */}
+                        </div>
                       </div>
-                  //   </div>
-                  // </div>
+                    </div> */}
+                  </div>
                 ) : (
                   <div className="space-y-6">
                     <div className="relative">
@@ -488,7 +487,7 @@ export default function Home() {
                         type="text"
                         value={otp}
                         onChange={(e) => setOtp(e.target.value.replace(/\D/g, "").slice(0, 4))}
-                        className="w-full px-6 py-4 bg-secondary/30 border-2 border-primary/20 focus:border-primary/50 rounded-xl text-white placeholder-gray-400 focus:outline-none transition-all duration-300 text-center text-2xl tracking-[1em] font-medium"
+                        className="w-full px-6 py-4 bg-black/40 border-2 border-blue-500/20 focus:border-blue-500/50 rounded-xl text-white placeholder-gray-400 focus:outline-none transition-all duration-300 text-center text-2xl tracking-[1em] font-medium"
                         placeholder="••••"
                         maxLength={4}
                       />
@@ -499,8 +498,8 @@ export default function Home() {
                       disabled={loading || otp.length !== 4}
                       className={`w-full py-4 rounded-xl font-medium text-lg flex items-center justify-center gap-3 transition-all duration-300 transform hover:translate-y-[-2px] ${
                         otp.length === 4
-                          ? "bg-gradient-to-r from-violet-500 to-fuchsia-500 hover:from-violet-600 hover:to-fuchsia-600 text-white shadow-[0_8px_20px_rgba(139,92,246,0.3)] hover:shadow-[0_10px_25px_rgba(139,92,246,0.4)]"
-                          : "bg-secondary text-gray-400 cursor-not-allowed"
+                          ? "bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white shadow-[0_8px_20px_rgba(59,130,246,0.3)] hover:shadow-[0_10px_25px_rgba(59,130,246,0.4)]"
+                          : "bg-black/40 text-gray-400 cursor-not-allowed"
                       }`}
                     >
                       {loading ? (
@@ -516,7 +515,7 @@ export default function Home() {
                       <button
                         onClick={handleResendOtp}
                         disabled={loading || resendTimer > 0}
-                        className="text-gray-400 hover:text-primary text-sm transition-all duration-300 hover:scale-105"
+                        className="text-gray-400 hover:text-blue-400 text-sm transition-all duration-300 hover:scale-105"
                       >
                         {resendTimer > 0 ? `Resend OTP in ${resendTimer}s` : "Resend OTP"}
                       </button>
@@ -526,7 +525,7 @@ export default function Home() {
               </div>
             </div>
           ) : (
-            <div className="bg-secondary-light/50 backdrop-blur-xl p-8 rounded-2xl border border-primary/20 shadow-[0_0_40px_rgba(139,92,246,0.15)] animate-fade-in max-w-md w-full relative">
+            <div className="bg-black/30 backdrop-blur-xl p-8 rounded-2xl border border-blue-500/20 shadow-[0_0_40px_rgba(59,130,246,0.15)] animate-fade-in max-w-md w-full relative">
               <button 
                 onClick={() => {
                   setShowSuccessScreen(false);
@@ -539,8 +538,8 @@ export default function Home() {
                 </svg>
               </button>
               <div className="text-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-primary/20 to-primary/5 rounded-full flex items-center justify-center mx-auto mb-8 shadow-[0_0_20px_rgba(139,92,246,0.3)]">
-                  <FaCheckCircle className="text-primary text-4xl" />
+                <div className="w-20 h-20 bg-gradient-to-br from-blue-500/20 to-blue-500/5 rounded-full flex items-center justify-center mx-auto mb-8 shadow-[0_0_20px_rgba(59,130,246,0.3)]">
+                  <FaCheckCircle className="text-blue-400 text-4xl" />
                 </div>
                 <h2 className="text-3xl font-bold text-white mb-4">
                   Welcome to SpinKings!
@@ -549,7 +548,7 @@ export default function Home() {
                   Our team will contact you shortly to complete your registration and guide you through the process.
                 </p>
                 <div className="space-y-4">
-                  <div className="bg-white/5 p-4 rounded-xl border border-white/10">
+                  <div className="bg-black/40 p-4 rounded-xl border border-blue-500/20">
                     <p className="text-gray-300 text-sm">
                       Please keep your phone nearby. Our representative will reach out to you within the next 24 hours.
                     </p>
@@ -565,19 +564,20 @@ export default function Home() {
           {/* Feature highlights */}
           {!showSuccessScreen && (
             <div className="flex flex-wrap justify-center gap-4 mt-8 animate-slide-up" style={{ animationDelay: "0.9s" }}>
-              <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm px-5 py-2.5 rounded-full border border-white/10">
+              <div className="flex items-center gap-2 bg-black/40 backdrop-blur-sm px-5 py-2.5 rounded-full border border-blue-500/20">
               <Link href="/privacy-policy" className="flex items-center gap-2">
-                <FaShieldAlt className="text-violet-400" />
-                  <span className="text-white text-sm">Privacy Policy</span>
+              <FaShieldAlt className="text-blue-400" />
+                <span className="text-white text-sm">Privacy Policy</span>
               </Link>
+                </div>
+            
+              <div className="flex items-center gap-2 bg-black/40 backdrop-blur-sm px-5 py-2.5 rounded-full border border-blue-500/20">
+                <Link href="/terms" className="flex items-center gap-2">
+                <FaRocket className="text-blue-400" />
+                <span className="text-white text-sm">Terms & Conditions</span>
+                </Link>
               </div>
-              <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm px-5 py-2.5 rounded-full border border-white/10">
-              <Link href="/terms" className="flex items-center gap-2">
-                <FaRocket className="text-fuchsia-400" />
-                <span className="text-white text-sm">Terms and Conditions</span>
-              </Link>
-              </div>
-              <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm px-5 py-2.5 rounded-full border border-white/10">
+              <div className="flex items-center gap-2 bg-black/40 backdrop-blur-sm px-5 py-2.5 rounded-full border border-blue-500/20">
               <Link href="#contact" className="flex items-center gap-2">
                 <FaHeadset className="text-blue-400" />
                 <span className="text-white text-sm">Contact Us</span>
@@ -589,25 +589,24 @@ export default function Home() {
       </section>
 
       {/* Our Story Section */}
-      <section ref={storyRef} id="about-us" className="py-20 px-4 bg-secondary">
+      <section ref={storyRef} id="about-us" className="py-20 px-4 bg-[#0A0A0F]">
         <div className="container mx-auto">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-white">
-              Our Journey
+              Our  <span className="text-gradient">Journey</span>
             </h2>
             <p className="text-gray-300 max-w-2xl mx-auto">
-              The story of SpinKings - from a vision to a leading digital
-              platform.
+              The story of SpinKings - from a vision to a leading digital platform.
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* The Beginning Card */}
             <div className="relative group">
-              <div className="absolute -inset-4 bg-gradient-to-r from-primary/10 to-accent/10 rounded-xl blur-lg group-hover:blur-xl transition-all duration-300"></div>
-              <div className="relative bg-secondary-light p-8 rounded-xl border border-primary/20 group-hover:border-primary/40 transition-all duration-300">
+              <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/10 to-blue-800/10 rounded-xl blur-lg group-hover:blur-xl transition-all duration-300"></div>
+              <div className="relative bg-black/30 p-8 rounded-xl border border-blue-500/20 group-hover:border-blue-500/40 transition-all duration-300">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-r from-primary to-primary-dark flex items-center justify-center text-white text-2xl font-bold">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-blue-700 flex items-center justify-center text-white text-2xl font-bold">
                     1
                   </div>
                   <h3 className="text-2xl font-bold text-white">
@@ -632,17 +631,17 @@ export default function Home() {
 
             {/* Growth Timeline */}
             <div className="relative group">
-              <div className="absolute -inset-4 bg-gradient-to-r from-accent/10 to-primary/10 rounded-xl blur-lg group-hover:blur-xl transition-all duration-300"></div>
-              <div className="relative bg-secondary-light p-8 rounded-xl border border-primary/20 group-hover:border-primary/40 transition-all duration-300">
+              <div className="absolute -inset-4 bg-gradient-to-r from-blue-800/10 to-blue-500/10 rounded-xl blur-lg group-hover:blur-xl transition-all duration-300"></div>
+              <div className="relative bg-black/30 p-8 rounded-xl border border-blue-500/20 group-hover:border-blue-500/40 transition-all duration-300">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-r from-accent to-accent-dark flex items-center justify-center text-white text-2xl font-bold">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-r from-blue-700 to-blue-900 flex items-center justify-center text-white text-2xl font-bold">
                     2
                   </div>
                   <h3 className="text-2xl font-bold text-white">Our Growth</h3>
                 </div>
                 <div className="space-y-6">
                   <div className="flex gap-4 items-start">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-primary to-primary-dark flex items-center justify-center text-white font-bold shrink-0">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-blue-700 flex items-center justify-center text-white font-bold shrink-0">
                       2020
                     </div>
                     <div>
@@ -654,7 +653,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="flex gap-4 items-start">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-primary to-primary-dark flex items-center justify-center text-white font-bold shrink-0">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-blue-700 flex items-center justify-center text-white font-bold shrink-0">
                       2021
                     </div>
                     <div>
@@ -666,7 +665,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="flex gap-4 items-start">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-primary to-primary-dark flex items-center justify-center text-white font-bold shrink-0">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-blue-700 flex items-center justify-center text-white font-bold shrink-0">
                       2022
                     </div>
                     <div>
@@ -678,7 +677,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="flex gap-4 items-start">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-primary to-primary-dark flex items-center justify-center text-white font-bold shrink-0">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-blue-700 flex items-center justify-center text-white font-bold shrink-0">
                       2023
                     </div>
                     <div>
@@ -698,8 +697,8 @@ export default function Home() {
 
           {/* Mission Statement */}
           <div className="mt-16 text-center">
-            <div className="inline-block bg-secondary-light p-8 rounded-xl border border-primary/20 max-w-3xl mx-auto relative group">
-              <div className="absolute -inset-4 bg-gradient-to-r from-primary/10 to-accent/10 rounded-xl blur-lg group-hover:blur-xl transition-all duration-300"></div>
+            <div className="inline-block bg-black/30 p-8 rounded-xl border border-blue-500/20 max-w-3xl mx-auto relative group">
+              <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/10 to-blue-800/10 rounded-xl blur-lg group-hover:blur-xl transition-all duration-300"></div>
               <div className="relative">
                 <h3 className="text-2xl font-bold mb-6 text-white">
                   Our Mission
@@ -713,15 +712,15 @@ export default function Home() {
                 </p>
                 <div className="flex items-center justify-center gap-4">
                   <div className="flex items-center gap-2">
-                    <FaShieldAlt className="text-primary" />
+                    <FaShieldAlt className="text-blue-400" />
                     <span className="text-gray-300">Secure Platform</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <FaRocket className="text-primary" />
+                    <FaRocket className="text-blue-400" />
                     <span className="text-gray-300">Fast Transactions</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <FaHeadset className="text-primary" />
+                    <FaHeadset className="text-blue-400" />
                     <span className="text-gray-300">24/7 Support</span>
                   </div>
                 </div>
@@ -732,7 +731,7 @@ export default function Home() {
             <div className="mt-12 text-center animate-fade-in">
               <button
                 onClick={() => scrollToSection(contactRef)}
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white px-8 py-4 rounded-xl font-semibold transition-all transform hover:scale-105 shadow-lg hover:shadow-primary/50 border border-primary/30"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white px-8 py-4 rounded-xl font-semibold transition-all transform hover:scale-105 shadow-lg hover:shadow-blue-500/50 border border-blue-500/30"
               >
                 Get in Touch with Us
                 <FaArrowRight className="text-xl" />
@@ -749,12 +748,12 @@ export default function Home() {
       <section
         ref={featuresRef}
         id="features"
-        className="py-20 px-4 bg-secondary-light relative overflow-hidden"
+        className="py-20 px-4 bg-[#0A0A0F] relative overflow-hidden"
       >
         {/* Background Elements */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
+          <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-800/10 rounded-full blur-3xl"></div>
         </div>
 
         <div className="container mx-auto relative z-10">
@@ -771,7 +770,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                icon: <FaRocket className="text-4xl text-primary" />,
+                icon: <FaRocket className="text-4xl text-blue-400" />,
                 title: "Lightning Fast Experience",
                 description:
                   "Enjoy seamless gameplay with our high-performance platform. Quick loading times and instant updates keep you in the game.",
@@ -782,7 +781,7 @@ export default function Home() {
                 ],
               },
               {
-                icon: <FaShieldAlt className="text-4xl text-primary" />,
+                icon: <FaShieldAlt className="text-4xl text-blue-400" />,
                 title: "Bank-Grade Security",
                 description:
                   "Your data and transactions are protected with enterprise-level security measures and encryption protocols.",
@@ -793,7 +792,7 @@ export default function Home() {
                 ],
               },
               {
-                icon: <FaChartLine className="text-4xl text-primary" />,
+                icon: <FaChartLine className="text-4xl text-blue-400" />,
                 title: "Advanced Analytics",
                 description:
                   "Make informed decisions with our comprehensive player statistics and match analysis tools.",
@@ -804,7 +803,7 @@ export default function Home() {
                 ],
               },
               {
-                icon: <FaHeadset className="text-4xl text-primary" />,
+                icon: <FaHeadset className="text-4xl text-blue-400" />,
                 title: "24/7 Premium Support",
                 description:
                   "Our dedicated support team is always ready to assist you with any queries or concerns.",
@@ -815,7 +814,7 @@ export default function Home() {
                 ],
               },
               {
-                icon: <FaGift className="text-4xl text-primary" />,
+                icon: <FaGift className="text-4xl text-blue-400" />,
                 title: "Exclusive Rewards",
                 description:
                   "Enjoy special bonuses, cash prizes, and exclusive rewards for your achievements.",
@@ -826,7 +825,7 @@ export default function Home() {
                 ],
               },
               {
-                icon: <FaMobileAlt className="text-4xl text-primary" />,
+                icon: <FaMobileAlt className="text-4xl text-blue-400" />,
                 title: "Mobile-First Design",
                 description:
                   "Play on the go with our responsive mobile interface designed for optimal gaming experience.",
@@ -839,14 +838,14 @@ export default function Home() {
             ].map((feature, index) => (
               <div
                 key={index}
-                className="group relative bg-secondary p-8 rounded-xl border border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
+                className="group relative bg-black/30 p-8 rounded-xl border border-blue-500/20 hover:border-blue-500/40 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20"
               >
-                <div className="absolute -inset-4 bg-gradient-to-r from-primary/10 to-accent/10 rounded-xl blur-lg group-hover:blur-xl transition-all duration-300"></div>
+                <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/10 to-blue-800/10 rounded-xl blur-lg group-hover:blur-xl transition-all duration-300"></div>
                 <div className="relative">
-                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-16 h-16 rounded-full bg-blue-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                     {feature.icon}
                   </div>
-                  <h3 className="text-xl font-bold mb-4 text-white group-hover:text-primary transition-colors duration-300">
+                  <h3 className="text-xl font-bold mb-4 text-white group-hover:text-blue-400 transition-colors duration-300">
                     {feature.title}
                   </h3>
                   <p className="text-gray-300 mb-6">{feature.description}</p>
@@ -856,7 +855,7 @@ export default function Home() {
                         key={i}
                         className="flex items-center gap-2 text-gray-300"
                       >
-                        <FaCheck className="text-primary" />
+                        <FaCheck className="text-blue-400" />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -868,16 +867,16 @@ export default function Home() {
 
           {/* Feature Highlights */}
           <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-secondary p-6 rounded-xl border border-primary/20 text-center">
-              <div className="text-4xl font-bold text-primary mb-2">1M+</div>
+            <div className="bg-black/30 p-6 rounded-xl border border-blue-500/20 text-center">
+              <div className="text-4xl font-bold text-blue-400 mb-2">1M+</div>
               <div className="text-gray-300">Active Users</div>
             </div>
-            <div className="bg-secondary p-6 rounded-xl border border-primary/20 text-center">
-              <div className="text-4xl font-bold text-primary mb-2">24/7</div>
+            <div className="bg-black/30 p-6 rounded-xl border border-blue-500/20 text-center">
+              <div className="text-4xl font-bold text-blue-400 mb-2">24/7</div>
               <div className="text-gray-300">Support Available</div>
             </div>
-            <div className="bg-secondary p-6 rounded-xl border border-primary/20 text-center">
-              <div className="text-4xl font-bold text-primary mb-2">99.9%</div>
+            <div className="bg-black/30 p-6 rounded-xl border border-blue-500/20 text-center">
+              <div className="text-4xl font-bold text-blue-400 mb-2">99.9%</div>
               <div className="text-gray-300">Uptime Guarantee</div>
             </div>
           </div>
@@ -885,7 +884,7 @@ export default function Home() {
       </section>
 
       {/* Pricing Section */}
-      <section
+      {/* <section
         ref={pricingRef}
         id="pricing"
         className="py-20 px-4 bg-secondary-light"
@@ -978,18 +977,18 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Contact Section */}
       <section
         ref={contactRef}
         id="contact"
-        className="py-20 px-4 bg-secondary relative overflow-hidden"
+        className="py-20 px-4 bg-[#0A0A0F] relative overflow-hidden"
       >
         {/* Background Elements */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
+          <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-800/10 rounded-full blur-3xl"></div>
         </div>
 
         <div className="container mx-auto relative z-10">
@@ -1005,8 +1004,8 @@ export default function Home() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <div className="bg-secondary-light p-8 rounded-xl border border-primary/20 relative group">
-              <div className="absolute -inset-4 bg-gradient-to-r from-primary/10 to-accent/10 rounded-xl blur-lg group-hover:blur-xl transition-all duration-300"></div>
+            <div className="bg-black/30 p-8 rounded-xl border border-blue-500/20 relative group">
+              <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/10 to-blue-800/10 rounded-xl blur-lg group-hover:blur-xl transition-all duration-300"></div>
               <div className="relative">
                 <h3 className="text-2xl font-bold mb-6 text-white">
                   Send us a Message
@@ -1023,7 +1022,7 @@ export default function Home() {
                       <input
                         type="text"
                         id="name"
-                        className="w-full px-4 py-3 bg-secondary border border-primary/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-primary transition-colors"
+                        className="w-full px-4 py-3 bg-black/40 border border-blue-500/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors"
                         placeholder="Enter your name"
                       />
                     </div>
@@ -1037,7 +1036,7 @@ export default function Home() {
                       <input
                         type="email"
                         id="email"
-                        className="w-full px-4 py-3 bg-secondary border border-primary/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-primary transition-colors"
+                        className="w-full px-4 py-3 bg-black/40 border border-blue-500/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors"
                         placeholder="Enter your email"
                       />
                     </div>
@@ -1052,7 +1051,7 @@ export default function Home() {
                     <input
                       type="text"
                       id="subject"
-                      className="w-full px-4 py-3 bg-secondary border border-primary/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-primary transition-colors"
+                      className="w-full px-4 py-3 bg-black/40 border border-blue-500/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors"
                       placeholder="What's this about?"
                     />
                   </div>
@@ -1066,13 +1065,13 @@ export default function Home() {
                     <textarea
                       id="message"
                       rows={4}
-                      className="w-full px-4 py-3 bg-secondary border border-primary/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-primary transition-colors resize-none"
+                      className="w-full px-4 py-3 bg-black/40 border border-blue-500/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors resize-none"
                       placeholder="Type your message here..."
                     ></textarea>
                   </div>
                   <button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white px-8 py-4 rounded-lg font-semibold transition-all transform hover:scale-105 shadow-lg hover:shadow-primary/50 border border-primary/30"
+                    className="w-full bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white px-8 py-4 rounded-lg font-semibold transition-all transform hover:scale-105 shadow-lg hover:shadow-blue-500/50 border border-blue-500/30"
                   >
                     Send Message
                   </button>
@@ -1083,10 +1082,10 @@ export default function Home() {
             {/* Contact Information */}
             <div className="space-y-8">
               {/* Support Hours */}
-              <div className="bg-secondary-light p-6 rounded-xl border border-primary/20">
+              <div className="bg-black/30 p-6 rounded-xl border border-blue-500/20">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                    <FaClock className="text-primary text-xl" />
+                  <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center">
+                    <FaClock className="text-blue-400 text-xl" />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white">
@@ -1097,21 +1096,21 @@ export default function Home() {
                 </div>
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 text-gray-300">
-                    <FaCheck className="text-primary" />
+                    <FaCheck className="text-blue-400" />
                     <span>Monday - Sunday: 24/7</span>
                   </div>
                   <div className="flex items-center gap-2 text-gray-300">
-                    <FaCheck className="text-primary" />
+                    <FaCheck className="text-blue-400" />
                     <span>Instant Response Time</span>
                   </div>
                 </div>
               </div>
 
               {/* Contact Methods */}
-              <div className="bg-secondary-light p-6 rounded-xl border border-primary/20">
+              <div className="bg-black/30 p-6 rounded-xl border border-blue-500/20">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                    <FaWhatsapp className="text-primary" />
+                  <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center">
+                    <FaWhatsapp className="text-blue-400" />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white">
@@ -1124,8 +1123,8 @@ export default function Home() {
                 </div>
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                      <FaWhatsapp className="text-primary" />
+                    <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center">
+                      <FaWhatsapp className="text-blue-400" />
                     </div>
                     <div>
                       <h4 className="text-white font-medium">WhatsApp</h4>
@@ -1133,8 +1132,8 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                      <FaTelegram className="text-primary" />
+                    <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center">
+                      <FaTelegram className="text-blue-400" />
                     </div>
                     <div>
                       <h4 className="text-white font-medium">Telegram</h4>
@@ -1142,8 +1141,8 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                      <FaEnvelope className="text-primary" />
+                    <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center">
+                      <FaEnvelope className="text-blue-400" />
                     </div>
                     <div>
                       <h4 className="text-white font-medium">Email</h4>
@@ -1154,10 +1153,10 @@ export default function Home() {
               </div>
 
               {/* FAQ Link */}
-              <div className="bg-secondary-light p-6 rounded-xl border border-primary/20">
+              <div className="bg-black/30 p-6 rounded-xl border border-blue-500/20">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                    <FaQuestion className="text-primary text-xl" />
+                  <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center">
+                    <FaQuestion className="text-blue-400 text-xl" />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white">
@@ -1170,7 +1169,7 @@ export default function Home() {
                 </div>
                 <button
                   onClick={() => scrollToSection(faqRef)}
-                  className="mt-4 w-full bg-secondary hover:bg-primary/10 text-white px-6 py-3 rounded-lg font-medium transition-colors border border-primary/20"
+                  className="mt-4 w-full bg-black/40 hover:bg-blue-500/10 text-white px-6 py-3 rounded-lg font-medium transition-colors border border-blue-500/20"
                 >
                   Visit FAQ Section
                 </button>

@@ -124,11 +124,11 @@ export default function Footer() {
               <input
                 type="email"
                 placeholder="Your email"
-                className="bg-secondary border border-primary/30 rounded-lg sm:rounded-r-none px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-primary w-full"
+                className="bg-secondary border border-blue-600 rounded-lg sm:rounded-r-none px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-primary w-full"
               />
               <button
                 type="submit"
-                className="bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded-lg sm:rounded-l-none transition-colors flex items-center justify-center"
+                className="bg-gradient-to-r from-blue-600 to-blue-800 hover:bg-primary-dark text-white px-6 py-2 rounded-lg sm:rounded-l-none transition-colors flex items-center justify-center"
               >
                 <span className="mr-2 text-sm sm:hidden">Subscribe</span>
                 <FaArrowLeft className="transform rotate-180" />
@@ -139,7 +139,7 @@ export default function Footer() {
 
         <div className="border-t border-primary/20 pt-8 mt-8">
           <div>
-            <div className="text-xl font-bold text-primary mb-4">18+ Only</div>
+            <div className="text-xl font-bold text-blue-500 mb-4">18+ Only</div>
             <div className="max-w-2xl">
               <h3 className="text-xl font-bold mb-4 text-white">Important Notice</h3>
               <p className="text-sm text-gray-400">

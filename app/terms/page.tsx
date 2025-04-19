@@ -16,7 +16,7 @@ export default function Terms() {
   ];
 
   return (
-    <main className="min-h-screen bg-secondary py-20 px-4">
+    <main className="min-h-screen mt-10  bg-secondary py-20 px-4">
       <div className="container mx-auto max-w-6xl">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
