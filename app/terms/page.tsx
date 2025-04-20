@@ -60,7 +60,7 @@ export default function Terms() {
                 <div className="space-y-6">
                   <h2 className="text-2xl font-bold text-white">Overview</h2>
                   <p className="text-gray-300">
-                    Welcome to SpinKings. By accessing or using our platform, you agree to be bound by these Terms of Service. Please read these terms carefully before using our services.
+                    Welcome to TopCricLeague. By accessing or using our platform, you agree to be bound by these Terms of Service. Please read these terms carefully before using our services.
                   </p>
                   <div className="bg-secondary p-6 rounded-lg border border-primary/20">
                     <h3 className="text-lg font-semibold text-white mb-4">Key Terms</h3>
@@ -195,7 +195,7 @@ export default function Terms() {
                 <div className="space-y-6">
                   <h2 className="text-2xl font-bold text-white">General Terms</h2>
                   <p className="text-gray-300">
-                    These terms constitute the entire agreement between you and SpinKings regarding your use of our services.
+                    These terms constitute the entire agreement between you and TopCricLeague regarding your use of our services.
                   </p>
                   <div className="bg-secondary p-6 rounded-lg border border-primary/20">
                     <h3 className="text-lg font-semibold text-white mb-4">Additional Terms</h3>
@@ -226,7 +226,7 @@ export default function Terms() {
               </p>
               <div className="space-y-3">
                 <p className="text-gray-300">
-                  Email: <span className="text-primary">legal@SpinKings.com</span>
+                  Email: <span className="text-primary">legal@TopCricLeague.com</span>
                 </p>
                 <p className="text-gray-300">
                   Address: <span className="text-primary">123 Legal Street, Terms City, TC 12345</span>

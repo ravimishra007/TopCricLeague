@@ -13,12 +13,18 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: 'SpinKings - Ultimate Fantasy Cricket Experience',
-  description: 'Experience the thrill of fantasy cricket with SpinKings - where every match is a chance to become royalty',
-  keywords: 'fantasy cricket, SpinKings, cricket game, fantasy sports, cricket betting, cricket league',
-  authors: [{ name: 'SpinKings Team' }],
+  title: 'TopCricLeague - Ultimate Fantasy Cricket Experience',
+  description: 'Experience the thrill of fantasy cricket with TopCricLeague - where every match is a chance to become royalty',
+  keywords: 'fantasy cricket, TopCricLeague, cricket game, fantasy sports, cricket betting, cricket league',
+  authors: [{ name: 'TopCricLeague Team' }],
   viewport: 'width=device-width, initial-scale=1',
   themeColor: '#8B5CF6',
+  creator: "CricFusion",
+  icons: {
+    icon: [
+      { url: "/TopCricLeague.png", type: "image/png" },
+    ],
+  },
 };
 
 export default function RootLayout({

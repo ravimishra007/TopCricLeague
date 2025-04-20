@@ -270,7 +270,7 @@ export default function Home() {
   // const handleSocialClick = (platform: "whatsapp" | "telegram") => {
   //   if (platform === "whatsapp") {
   //     const whatsappNumber = "+13044941901";
-  //     const message = "Hi, I'm interested in SpinKings!";
+  //     const message = "Hi, I'm interested in TopCricLeague!";
   //     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
   //       message
   //     )}`;
@@ -542,7 +542,7 @@ export default function Home() {
                   <FaCheckCircle className="text-blue-400 text-4xl" />
                 </div>
                 <h2 className="text-3xl font-bold text-white mb-4">
-                  Welcome to SpinKings!
+                  Welcome to TopCricLeague!
                 </h2>
                 <p className="text-gray-300 mb-8 text-lg">
                   Our team will contact you shortly to complete your registration and guide you through the process.
@@ -555,7 +555,7 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="text-gray-400 text-sm mt-8">
-                  Thank you for choosing SpinKings!
+                  Thank you for choosing TopCricLeague!
                 </p>
               </div>
             </div>
@@ -593,10 +593,14 @@ export default function Home() {
         <div className="container mx-auto">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-white">
-              Our  <span className="text-gradient">Journey</span>
+              Our{" "}
+              <span className="relative">
+                <span className="relative z-10 bg-gradient-to-r from-blue-400 to-blue-600 text-transparent bg-clip-text">Journey</span>
+                <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-blue-600 blur-sm"></div>
+              </span>
             </h2>
             <p className="text-gray-300 max-w-2xl mx-auto">
-              The story of SpinKings - from a vision to a leading digital platform.
+              The story of TopCricLeague - from a vision to a leading digital platform.
             </p>
           </div>
 
@@ -614,7 +618,7 @@ export default function Home() {
                   </h3>
                 </div>
                 <p className="text-gray-300 mb-6">
-                  SpinKings was born in 2020 from a simple yet powerful idea: to
+                  TopCricLeague was born in 2020 from a simple yet powerful idea: to
                   revolutionize how cricket fans engage with the sport they
                   love. Founded by a team of passionate cricket enthusiasts and
                   tech innovators, we set out to create a platform that would
@@ -704,7 +708,7 @@ export default function Home() {
                   Our Mission
                 </h3>
                 <p className="text-gray-300 mb-6">
-                  At SpinKings, we're committed to creating a platform that
+                  At TopCricLeague, we're committed to creating a platform that
                   brings cricket enthusiasts together, providing them with
                   innovative tools to enhance their experience and earn rewards.
                   We believe in transparency, security, and delivering
@@ -759,7 +763,7 @@ export default function Home() {
         <div className="container mx-auto relative z-10">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-white">
-              Why Choose <span className="text-gradient">SpinKings</span>
+              Why Choose <span className="text-gradient">TopCricLeague</span>
             </h2>
             <p className="text-gray-300 max-w-2xl mx-auto">
               Experience the future of fantasy cricket with our cutting-edge
@@ -1137,7 +1141,7 @@ export default function Home() {
                     </div>
                     <div>
                       <h4 className="text-white font-medium">Telegram</h4>
-                      <p className="text-gray-300">@SpinKingsSupport</p>
+                      <p className="text-gray-300">@TopCricLeagueSupport</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
@@ -1146,7 +1150,7 @@ export default function Home() {
                     </div>
                     <div>
                       <h4 className="text-white font-medium">Email</h4>
-                      <p className="text-gray-300">support@SpinKings.com</p>
+                      <p className="text-gray-300">support@TopCricLeague.com</p>
                     </div>
                   </div>
                 </div>

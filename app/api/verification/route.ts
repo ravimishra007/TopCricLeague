@@ -49,8 +49,8 @@ export async function POST(req: Request) {
 
     const emailData = {
       sender: {
-        name: "SpinKings",
-        email: "notifications@SpinKings.com",
+        name: "TopCricLeague",
+        email: "notifications@TopCricLeague.com",
       },
       to: [
         {
@@ -62,7 +62,7 @@ export async function POST(req: Request) {
           name: "Sense Digital",
         },
       ],
-      subject: "New Phone Number Verification Alert - SpinKings",
+      subject: "New Phone Number Verification Alert - TopCricLeague",
       htmlContent: `
       <div style="font-family: Arial, sans-serif; font-size: 16px; color: #333; max-width: 600px; margin: 0 auto;">
         <h2 style="color: #4a1e9e;">Phone Number Verification Notification</h2>
@@ -74,7 +74,7 @@ export async function POST(req: Request) {
           <p><strong>Account Opened:</strong> ${user.account_opened}</p>
           <p><strong>First Deposit:</strong> ${user.first_deposit_done}</p>
         </div>
-        <p style="color: #666;">This is an automated notification from the SpinKings verification system.</p>
+        <p style="color: #666;">This is an automated notification from the TopCricLeague verification system.</p>
         <hr style="border: 1px solid #eee; margin: 20px 0;">
         <p style="font-size: 14px; color: #888;">
           Note: This email is for monitoring purposes only. Please do not reply to this email.

@@ -60,7 +60,7 @@ export default function PrivacyPolicy() {
                 <div className="space-y-6">
                   <h2 className="text-2xl font-bold text-white">Overview</h2>
                   <p className="text-gray-300">
-                    At SpinKings, we take your privacy seriously. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our platform. Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site.
+                    At TopCricLeague, we take your privacy seriously. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our platform. Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site.
                   </p>
                   <div className="bg-secondary p-6 rounded-lg border border-primary/20">
                     <h3 className="text-lg font-semibold text-white mb-4">Key Points</h3>
@@ -237,7 +237,7 @@ export default function PrivacyPolicy() {
               </p>
               <div className="space-y-3">
                 <p className="text-gray-300">
-                  Email: <span className="text-primary">privacy@SpinKings.com</span>
+                  Email: <span className="text-primary">privacy@TopCricLeague.com</span>
                 </p>
                 <p className="text-gray-300">
                   Address: <span className="text-primary">123 Privacy Street, Data City, DC 12345</span>

@@ -68,7 +68,7 @@ export default function AboutPage() {
               <div className="relative bg-black/50 p-8 rounded-xl border border-red-500/20 backdrop-blur-sm">
                 <h3 className="text-3xl font-bold mb-8 text-white">The Beginning</h3>
                 <p className="text-gray-300 text-lg mb-6 leading-relaxed">
-                  SpinKings  was founded in 2020 by a team of passionate cricket enthusiasts and technology innovators.
+                  TopCricLeague  was founded in 2020 by a team of passionate cricket enthusiasts and technology innovators.
                   We recognized a gap in the market for a platform that could bring the excitement of cricket to fans in a
                   more interactive and rewarding way.
                 </p>
@@ -115,7 +115,7 @@ export default function AboutPage() {
             <div className="bg-black/50 p-5 sm:p-12 rounded-xl border border-red-500/20 backdrop-blur-sm max-w-4xl mx-auto">
               <h3 className="text-3xl font-bold mb-6 text-center text-white">Our Mission</h3>
               <p className="text-gray-300 text-lg sm:text-xl text-center leading-relaxed">
-                At SpinKings , we're committed to creating a platform that brings cricket enthusiasts together,
+                At TopCricLeague , we're committed to creating a platform that brings cricket enthusiasts together,
                 providing them with innovative tools to enhance their experience and earn rewards. We believe in
                 transparency, security, and delivering exceptional value to our users.
               </p>
@@ -168,7 +168,7 @@ export default function AboutPage() {
             </h2>
             <div className="w-20 h-0.5 bg-gradient-to-r from-red-600 to-yellow-500 mx-auto mb-8"></div>
             <p className="text-gray-300 text-lg max-w-3xl mx-auto leading-relaxed">
-              Meet the passionate individuals behind SpinKings who are dedicated to revolutionizing cricket engagement.
+              Meet the passionate individuals behind TopCricLeague who are dedicated to revolutionizing cricket engagement.
             </p>
           </div>
 
@@ -210,11 +210,11 @@ export default function AboutPage() {
           <div className="bg-black/50 p-5 sm:p-16 rounded-2xl border border-red-500/20 backdrop-blur-sm text-center max-w-5xl mx-auto transform hover:scale-[1.01] transition-transform">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8">
               <span className="text-white">Join the </span>
-              <span className="bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500 text-transparent bg-clip-text">SpinKings</span>
+              <span className="bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500 text-transparent bg-clip-text">TopCricLeague</span>
               <span className="text-white"> Community</span>
             </h2>
             <p className="text-gray-300 text-xl max-w-3xl mx-auto mb-12 leading-relaxed">
-              Experience the future of cricket engagement and start earning rewards today. Join thousands of satisfied users who have transformed their cricket experience with SpinKings.
+              Experience the future of cricket engagement and start earning rewards today. Join thousands of satisfied users who have transformed their cricket experience with TopCricLeague.
             </p>
             <Link
               href="/"

@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -64,13 +65,22 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass-effect">
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-4 py-3">
         <div className="flex justify-between items-center">
-          <Link href="/" className="text-2xl font-bold text-white font-montserrat">
-            <span className="bg-gradient-to-r from-primary via-accent to-primary text-transparent bg-clip-text">
-              Spin
-            </span>
-            <span className="text-white">Kings</span>
+          <Link href="/" className="text-xl font-bold text-white font-montserrat flex items-center ">
+            <Image 
+              src="/TopCricLeague.png" 
+              alt="TopCricLeague Logo" 
+              width={50} 
+              height={50}
+              className="object-contain"
+            />
+            <div className="flex items-center">
+              <span className="bg-gradient-to-r from-primary via-accent to-primary text-transparent bg-clip-text">
+              TopCric
+              </span>
+              <span className="text-white">League</span>
+            </div>
           </Link>
 
           {/* Desktop Menu */}

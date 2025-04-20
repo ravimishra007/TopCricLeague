@@ -55,9 +55,9 @@ export default function Footer() {
           <div className="col-span-2 lg:col-span-1">
             <h3 className="text-xl font-bold mb-4 text-white">
               <span className="bg-gradient-to-r from-primary via-accent to-primary text-transparent bg-clip-text">
-                Spin
+                TopCric
               </span>
-              <span className="text-white">Kings</span>
+              <span className="text-white">League</span>
             </h3>
             <p className="text-gray-300 mb-6">
               Experience the thrill of fantasy cricket with our cutting-edge platform.
@@ -150,7 +150,7 @@ export default function Footer() {
           </div>
 
           <div className="text-center mt-8 text-gray-300">
-            <p>&copy; {new Date().getFullYear()} SpinKings. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} TopCricLeague. All rights reserved.</p>
           </div>
         </div>
       </div>
