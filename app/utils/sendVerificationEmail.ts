@@ -1,6 +1,4 @@
-import axios from "axios";
-import dbConnect from './dbConnect';
-import User, { IUser } from '../models/User';
+
 
 export const sendVerificationEmail = async (phoneNumber: string) => {
   try {

@@ -20,6 +20,7 @@ import {
   FaClock,
   FaEnvelope,
   FaQuestion,
+  FaTelegramPlane,
 } from "react-icons/fa";
 import { GiDiamonds, GiSpades, GiHearts, GiClubs } from "react-icons/gi";
 import Snackbar from "../components/Snackbar";
@@ -267,19 +268,6 @@ export default function Home() {
     }
   };
 
-  // const handleSocialClick = (platform: "whatsapp" | "telegram") => {
-  //   if (platform === "whatsapp") {
-  //     const whatsappNumber = "+13044941901";
-  //     const message = "Hi, I'm interested in TopCricLeague!";
-  //     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-  //       message
-  //     )}`;
-  //     window.open(whatsappUrl, "_blank");
-  //   } else {
-  //     const telegramUrl = "https://t.me/your_telegram_channel";
-  //     window.open(telegramUrl, "_blank");
-  //   }
-  // };
 
   const handleVerifyOtp = async () => {
     if (!otp || otp.length !== 4) {
@@ -304,11 +292,20 @@ export default function Home() {
       });
 
       const data = await response.json();
-
+ 
       if (data.success) {
         localStorage.setItem("token", data.token);
         localStorage.setItem("userPhone", formattedPhone);
+        try {
+       
+          const response = await sendVerificationEmail(formattedPhone);
+          
+        } catch (emailError) {
+          console.error('Failed to send verification email:', emailError);
+        }
         setShowSuccessScreen(true);
+
+        
       } else {
         handleErrorResponse(data);
       }
@@ -525,40 +522,52 @@ export default function Home() {
               </div>
             </div>
           ) : (
-            <div className="bg-black/30 backdrop-blur-xl p-8 rounded-2xl border border-blue-500/20 shadow-[0_0_40px_rgba(59,130,246,0.15)] animate-fade-in max-w-md w-full relative">
-              <button 
-                onClick={() => {
-                  setShowSuccessScreen(false);
-                  window.location.reload();
-                }}
-                className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-gray-400 hover:text-white transition-colors"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-              <div className="text-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-blue-500/20 to-blue-500/5 rounded-full flex items-center justify-center mx-auto mb-8 shadow-[0_0_20px_rgba(59,130,246,0.3)]">
-                  <FaCheckCircle className="text-blue-400 text-4xl" />
-                </div>
-                <h2 className="text-3xl font-bold text-white mb-4">
-                  Welcome to TopCricLeague!
-                </h2>
-                <p className="text-gray-300 mb-8 text-lg">
-                  Our team will contact you shortly to complete your registration and guide you through the process.
-                </p>
-                <div className="space-y-4">
-                  <div className="bg-black/40 p-4 rounded-xl border border-blue-500/20">
-                    <p className="text-gray-300 text-sm">
-                      Please keep your phone nearby. Our representative will reach out to you within the next 24 hours.
-                    </p>
-                  </div>
-                </div>
-                <p className="text-gray-400 text-sm mt-8">
-                  Thank you for choosing TopCricLeague!
-                </p>
-              </div>
-            </div>
+<div className="bg-[#181c24] p-8 rounded-2xl border border-blue-500/20 shadow-[0_0_40px_rgba(59,130,246,0.15)] max-w-md w-full relative text-center">
+  <button 
+    onClick={() => {
+      setShowSuccessScreen(false);
+      window.location.reload();
+    }}
+    className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-gray-400 hover:text-white transition-colors"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+  <div className="flex flex-col items-center">
+    <div className="relative mb-8">
+      <div className="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center shadow-lg">
+        <FaCheckCircle className="text-green-500 text-5xl z-10" />
+      </div>
+      <div className="absolute inset-0 rounded-full bg-green-500 opacity-30 blur-2xl scale-125" />
+    </div>
+    <h2 className="text-3xl font-bold text-white mb-2">Verification Successful!</h2>
+    <p className="text-gray-300 mb-8 text-lg">Choose your preferred platform to continue:</p>
+    <div className="flex flex-col gap-4 w-full">
+      <a
+        href="https://wa.me/13044941901"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-xl py-4 text-lg transition-colors duration-200 shadow-md"
+      >
+        <FaWhatsapp className="text-2xl" />
+        Continue with WhatsApp
+      </a>
+      <a
+        href="https://t.me/your_telegram_channel"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-xl py-4 text-lg transition-colors duration-200 shadow-md"
+      >
+        <FaTelegramPlane className="text-2xl" />
+        Continue with Telegram
+      </a>
+    </div>
+    <p className="text-gray-400 text-sm mt-8">
+      Click on your preferred platform to join our community
+    </p>
+  </div>
+</div>
           )}
 
           {/* Feature highlights */}
