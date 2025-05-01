@@ -6,6 +6,7 @@ export interface IUser extends Document {
   message_sent: 'yes' | 'no';
   account_opened: 'yes' | 'no';
   first_deposit_done: 'yes' | 'no';
+  website_name?: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -22,6 +23,11 @@ const userSchema = new mongoose.Schema<IUser>({
       },
       message: props => `${props.value} is not a valid Indian phone number!`
     }
+  },
+  website_name: {
+    type: String,
+    trim: true,
+    default: "https://topcricleague.com/"
   },
   verificationTime: {
     type: Date,
