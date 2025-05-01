@@ -553,15 +553,6 @@ export default function Home() {
         <FaWhatsapp className="text-2xl" />
         Continue with WhatsApp
       </a>
-      <a
-        href="https://t.me/your_telegram_channel"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-xl py-4 text-lg transition-colors duration-200 shadow-md"
-      >
-        <FaTelegramPlane className="text-2xl" />
-        Continue with Telegram
-      </a>
     </div>
     <p className="text-gray-400 text-sm mt-8">
       Click on your preferred platform to join our community
