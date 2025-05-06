@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -24,21 +24,12 @@ import {
 } from "react-icons/fa";
 import { GiDiamonds, GiSpades, GiHearts, GiClubs } from "react-icons/gi";
 import Snackbar from "../components/Snackbar";
-import { sendVerificationEmail } from "./utils/sendVerificationEmail";
 
 export default function Home() {
   const [phone, setPhone] = useState("");
-  const [formattedPhone, setFormattedPhone] = useState("");
-  const [otp, setOtp] = useState("");
-  const [isOtpSent, setIsOtpSent] = useState(false);
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
   const [isPhoneFocused, setIsPhoneFocused] = useState(false);
   const [showSuccessScreen, setShowSuccessScreen] = useState(false);
-  const [resendTimer, setResendTimer] = useState(0);
-  const [showAuthModal, setShowAuthModal] = useState(false);
-
   const [snackbar, setSnackbar] = useState<{
     isOpen: boolean;
     type: "success" | "error" | "info";
@@ -46,64 +37,27 @@ export default function Home() {
     message: string;
   }>({
     isOpen: false,
-    type: "info" as "success" | "error" | "info",
+    type: "info",
     title: "",
     message: "",
   });
 
   const heroRef = useRef<HTMLDivElement>(null);
   const featuresRef = useRef<HTMLDivElement>(null);
-  // const testimonialsRef = useRef<HTMLDivElement>(null);
   const pricingRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
   const storyRef = useRef<HTMLDivElement>(null);
   const guideRef = useRef<HTMLDivElement>(null);
   const faqRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
   const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const resetPageState = () => {
-    setPhone("");
-    setFormattedPhone("");
-    setOtp("");
-    setIsOtpSent(false);
-    setError("");
-    setLoading(false);
-  };
-
-  const closeSnackbar = () => {
-    // Only reset if it was a successful verification
-    if (
-      snackbar.type === "success" &&
-      snackbar.message.includes("Verification successful")
-    ) {
-      resetPageState();
-    }
-    setSnackbar((prev) => ({ ...prev, isOpen: false }));
-  };
-
-  const handleRedirect = () => {
-    // Only reset if it was a successful verification
-    if (
-      snackbar.type === "success" &&
-      snackbar.message.includes("Verification successful")
-    ) {
-      resetPageState();
-    }
-    window.location.href = "/";
   };
 
   const showSnackbar = (
     type: "success" | "error" | "info",
     title: string,
-    message: string,
-    shouldRedirect = false
+    message: string
   ) => {
     setSnackbar({
       isOpen: true,
@@ -111,119 +65,14 @@ export default function Home() {
       title,
       message,
     });
-
-    if (shouldRedirect) {
-      // Add a delay before redirect to show the snackbar
-      setTimeout(handleRedirect, 2000);
-    }
   };
 
-  const handleErrorResponse = (data: any) => {
-    switch (data.errorType) {
-      case "ALREADY_VERIFIED":
-        // Send verification email for already verified numbers too
-        try {
-          sendVerificationEmail(formattedPhone);
-        } catch (emailError) {
-          console.error("Failed to send verification email:", emailError);
-        }
-        showSnackbar(
-          "success",
-          "Already Verified",
-          "Verification successful. Redirecting...",
-          true
-        );
-        break;
-      case "INVALID_OTP":
-        showSnackbar(
-          "error",
-          "Invalid OTP",
-          "Please check the OTP and try again."
-        );
-        setOtp(""); // Clear the OTP input
-        break;
-      case "VERIFICATION_FAILED":
-        showSnackbar(
-          "error",
-          "Verification Failed",
-          "Could not verify the OTP. Please try again or request a new one."
-        );
-        setOtp(""); // Clear the OTP input
-        break;
-      case "RESEND_FAILED":
-        showSnackbar(
-          "error",
-          "Resend Failed",
-          "Could not resend OTP. Please try again in a few minutes."
-        );
-        break;
-      default:
-        showSnackbar(
-          "error",
-          "Error",
-          data.message || "Something went wrong. Please try again."
-        );
-    }
+  const closeSnackbar = () => {
+    setSnackbar((prev) => ({ ...prev, isOpen: false }));
   };
 
-  // Function to handle automatic OTP reading
-  const startOtpListener = async () => {
-    if (!("OTPCredential" in window)) {
-      console.log("Web OTP API not supported");
-      return;
-    }
-
-    try {
-      const abortController = new AbortController();
-
-      // Add an abort timeout of 2 minutes
-      setTimeout(() => {
-        abortController.abort();
-      }, 120000);
-
-      // @ts-ignore - Web OTP API experimental feature
-      const credential = await navigator.credentials.get({
-        // @ts-ignore - Web OTP API experimental feature
-        otp: { transport: ["sms"] },
-        signal: abortController.signal,
-      });
-
-      // @ts-ignore - Web OTP API experimental feature
-      if (credential?.code) {
-        // @ts-ignore - Web OTP API experimental feature
-        const otpCode = credential.code;
-        if (otpCode && typeof otpCode === "string" && otpCode.length === 4) {
-          setOtp(otpCode);
-          showSnackbar(
-            "success",
-            "OTP Detected",
-            "OTP has been automatically filled"
-          );
-          // Automatically verify after a short delay
-          setTimeout(() => {
-            handleVerifyOtp();
-          }, 500);
-        }
-      }
-    } catch (err: any) {
-      if (err?.name === "AbortError") {
-        console.log("OTP reading timed out");
-        showSnackbar("info", "OTP Timeout", "Please enter the OTP manually");
-      } else {
-        console.log("OTP Reading failed:", err);
-      }
-    }
-  };
-
-  // Start OTP listener when OTP is sent
-  useEffect(() => {
-    if (isOtpSent) {
-      startOtpListener();
-    }
-  }, [isOtpSent]);
-
-  const handleSendOtp = async () => {
-    if (!phone) {
+  const handleSubmit = async () => {
+    if (!phone || phone.length !== 10) {
       showSnackbar(
         "error",
         "Invalid Phone Number",
@@ -232,119 +81,39 @@ export default function Home() {
       return;
     }
 
-    const formattedNumber = `+91${phone}`;
-    setFormattedPhone(formattedNumber);
     setLoading(true);
-    setError("");
-
     try {
       const response = await fetch("/api/auth", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          phone: formattedNumber,
-          action: "send",
-        }),
+        body: JSON.stringify({ phone }),
       });
 
       const data = await response.json();
 
       if (data.success) {
-        setIsOtpSent(true);
-        showSnackbar(
-          "success",
-          "OTP Sent!",
-          "Please wait while we try to auto-fill the OTP"
-        );
-      } else {
-        handleErrorResponse(data);
-      }
-    } catch (err) {
-      showSnackbar("error", "Error", "Failed to send OTP. Please try again.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-
-  const handleVerifyOtp = async () => {
-    if (!otp || otp.length !== 4) {
-      showSnackbar("error", "Invalid OTP", "Please enter a valid 4-digit OTP");
-      return;
-    }
-
-    setLoading(true);
-    setError("");
-
-    try {
-      const response = await fetch("/api/auth", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          phone: formattedPhone,
-          otp,
-          action: "verify",
-        }),
-      });
-
-      const data = await response.json();
- 
-      if (data.success) {
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("userPhone", formattedPhone);
-        try {
-       
-          const response = await sendVerificationEmail(formattedPhone);
-          
-        } catch (emailError) {
-          console.error('Failed to send verification email:', emailError);
-        }
         setShowSuccessScreen(true);
-
-        
-      } else {
-        handleErrorResponse(data);
-      }
-    } catch (err) {
-      showSnackbar("error", "Error", "Failed to verify OTP. Please try again.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleResendOtp = async () => {
-    setLoading(true);
-    setError("");
-
-    try {
-      const response = await fetch("/api/auth", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          phone: formattedPhone,
-          action: "resend",
-        }),
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
         showSnackbar(
           "success",
-          "OTP Resent!",
-          "Please check your phone for the new OTP code"
+          "Success",
+          "Phone number saved successfully!"
         );
+        setPhone("");
       } else {
-        handleErrorResponse(data);
+        showSnackbar(
+          "error",
+          "Error",
+          data.message || "Something went wrong"
+        );
       }
-    } catch (err) {
-      showSnackbar("error", "Error", "Failed to resend OTP. Please try again.");
+    } catch (error) {
+      showSnackbar(
+        "error",
+        "Error",
+        "Failed to save phone number"
+      );
     } finally {
       setLoading(false);
     }
@@ -370,10 +139,7 @@ export default function Home() {
       />
 
       {/* Hero Section */}
-      <section
-        ref={heroRef}
-        className="relative min-h-[100svh] mt-20 flex items-center justify-center overflow-hidden bg-[#0A0A0F]"
-      >
+      <section className="relative min-h-[100svh] mt-20 flex items-center justify-center overflow-hidden bg-[#0A0A0F]">
         {/* Premium Background elements */}
         <div className="absolute inset-0 z-0">
           {/* Main gradient background */}
@@ -394,10 +160,9 @@ export default function Home() {
         </div>
 
         <div className="flex flex-col items-center text-center w-full max-w-4xl mx-auto relative z-20 px-4 sm:px-6 py-8 sm:py-12">
-          {!showSuccessScreen ? (
             <div className="text-white w-full">
               <div className="space-y-6 mb-12">
-                <h1 className="text-4xl sm:text-5xl  font-bold animate-fade-in leading-tight">
+                <h1 className="text-4xl sm:text-5xl font-bold animate-fade-in leading-tight">
                   Elevate Your{" "}
                   <span className="relative">
                     <span className="relative z-10 bg-gradient-to-r from-blue-400 to-blue-600 text-transparent bg-clip-text">Fantasy</span>
@@ -416,150 +181,68 @@ export default function Home() {
 
               {/* Form Container */}
               <div className="w-full max-w-md mx-auto bg-black/30 backdrop-blur-xl rounded-2xl p-8 border border-blue-500/20 shadow-[0_0_50px_rgba(59,130,246,0.1)]">
-                {!isOtpSent ? (
-                  <div className="space-y-6">
-                    <div className="relative">
-                      <input
-                        type="tel"
-                        name="phone"
-                        autoComplete="tel"
-                        value={phone}
-                        onChange={(e) => {
-                          setPhone(e.target.value.replace(/\D/g, "").slice(0, 10));
-                        }}
-                        onFocus={() => setIsPhoneFocused(true)}
-                        onBlur={() => setIsPhoneFocused(false)}
-                        className="w-full px-6 py-4 bg-black/40 border-2 border-blue-500/20 focus:border-blue-500/50 rounded-xl text-white placeholder-gray-400 focus:outline-none transition-all duration-300 text-lg tracking-wide"
-                        placeholder="Enter your mobile number"
-                        maxLength={10}
-                      />
-                      {isPhoneFocused && (
-                        <div className="absolute -top-3 left-4 px-2 bg-[#0A0A0F] text-xs text-gray-400">
-                          Mobile Number
-                        </div>
-                      )}
-                    </div>
-
-                    <button
-                      onClick={handleSendOtp}
-                      disabled={loading || !phone || phone.length !== 10}
-                      className={`w-full py-4 rounded-xl font-medium text-lg flex items-center justify-center gap-3 transition-all duration-300 transform hover:translate-y-[-2px] ${
-                        phone.length === 10
-                          ? "bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white shadow-[0_8px_20px_rgba(59,130,246,0.3)] hover:shadow-[0_10px_25px_rgba(59,130,246,0.4)]"
-                          : "bg-black/40 text-gray-400 cursor-not-allowed"
-                      }`}
-                    >
-                      {loading ? (
-                        <div className="w-6 h-6 border-2 border-white/20 border-t-white rounded-full animate-spin"></div>
-                      ) : (
-                        <>
-                          Get Started <FaArrowRight className="text-xl" />
-                        </>
-                      )}
-                    </button>
-
-                    {/* <div className="flex items-center justify-center mt-4 p-3 bg-black/40 backdrop-blur-sm rounded-xl border border-blue-500/20">
-                      <div className="flex items-center gap-3">
-                        <div className="bg-blue-500/10 p-2 rounded-lg">
-                          <FaShieldAlt className="text-blue-400" />
-                        </div>
-                        <div className="text-left">
-                          <p className="text-gray-400 text-sm">
-                            Your data is protected with bank-grade security.{" "}
-                            <Link
-                              href="/privacy-policy"
-                              className="text-blue-400 hover:text-blue-300 transition-colors underline-offset-4 hover:underline"
-                            >
-                              Privacy Policy
-                            </Link>
-                          </p>
-                        </div>
+                <div className="space-y-6">
+                  <div className="relative">
+                    <input
+                      type="tel"
+                      name="phone"
+                      autoComplete="tel"
+                      value={phone}
+                      onChange={(e) => {
+                        setPhone(e.target.value.replace(/\D/g, "").slice(0, 10));
+                      }}
+                      onFocus={() => setIsPhoneFocused(true)}
+                      onBlur={() => setIsPhoneFocused(false)}
+                      className="w-full px-6 py-4 bg-black/40 border-2 border-blue-500/20 focus:border-blue-500/50 rounded-xl text-white placeholder-gray-400 focus:outline-none transition-all duration-300 text-lg tracking-wide"
+                      placeholder="Enter your mobile number"
+                      maxLength={10}
+                    />
+                    {isPhoneFocused && (
+                      <div className="absolute -top-3 left-4 px-2 bg-[#0A0A0F] text-xs text-gray-400">
+                        Mobile Number
                       </div>
-                    </div> */}
+                    )}
                   </div>
-                ) : (
-                  <div className="space-y-6">
-                    <div className="relative">
-                      <input
-                        type="text"
-                        value={otp}
-                        onChange={(e) => setOtp(e.target.value.replace(/\D/g, "").slice(0, 4))}
-                        className="w-full px-6 py-4 bg-black/40 border-2 border-blue-500/20 focus:border-blue-500/50 rounded-xl text-white placeholder-gray-400 focus:outline-none transition-all duration-300 text-center text-2xl tracking-[1em] font-medium"
-                        placeholder="••••"
-                        maxLength={4}
-                      />
-                    </div>
 
-                    <button
-                      onClick={handleVerifyOtp}
-                      disabled={loading || otp.length !== 4}
-                      className={`w-full py-4 rounded-xl font-medium text-lg flex items-center justify-center gap-3 transition-all duration-300 transform hover:translate-y-[-2px] ${
-                        otp.length === 4
-                          ? "bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white shadow-[0_8px_20px_rgba(59,130,246,0.3)] hover:shadow-[0_10px_25px_rgba(59,130,246,0.4)]"
-                          : "bg-black/40 text-gray-400 cursor-not-allowed"
-                      }`}
-                    >
-                      {loading ? (
-                        <div className="w-6 h-6 border-2 border-white/20 border-t-white rounded-full animate-spin"></div>
-                      ) : (
-                        <>
-                          Verify OTP <FaCheck className="text-xl" />
-                        </>
-                      )}
-                    </button>
+                  <button
+                    onClick={handleSubmit}
+                    disabled={loading || !phone || phone.length !== 10}
+                    className={`w-full py-4 rounded-xl font-medium text-lg flex items-center justify-center gap-3 transition-all duration-300 transform hover:translate-y-[-2px] ${
+                      phone.length === 10
+                        ? "bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white shadow-[0_8px_20px_rgba(59,130,246,0.3)] hover:shadow-[0_10px_25px_rgba(59,130,246,0.4)]"
+                        : "bg-black/40 text-gray-400 cursor-not-allowed"
+                    }`}
+                  >
+                    {loading ? (
+                      <div className="w-6 h-6 border-2 border-white/20 border-t-white rounded-full animate-spin"></div>
+                    ) : (
+                      <>
+                        Submit <FaArrowRight className="text-xl" />
+                      </>
+                    )}
+                  </button>
 
-                    <div className="text-center">
-                      <button
-                        onClick={handleResendOtp}
-                        disabled={loading || resendTimer > 0}
-                        className="text-gray-400 hover:text-blue-400 text-sm transition-all duration-300 hover:scale-105"
-                      >
-                        {resendTimer > 0 ? `Resend OTP in ${resendTimer}s` : "Resend OTP"}
-                      </button>
+                  <div className="flex items-center justify-center mt-4 p-3 bg-black/40 backdrop-blur-sm rounded-xl border border-blue-500/20">
+                    <div className="flex items-center gap-3">
+                      <div className="bg-blue-500/10 p-2 rounded-lg">
+                        <FaShieldAlt className="text-blue-400" />
+                      </div>
+                      <div className="text-left">
+                        <p className="text-gray-400 text-sm">
+                          Your data is protected with bank-grade security.{" "}
+                          <Link
+                            href="/privacy-policy"
+                            className="text-blue-400 hover:text-blue-300 transition-colors underline-offset-4 hover:underline"
+                          >
+                            Privacy Policy
+                          </Link>
+                        </p>
+                      </div>
                     </div>
                   </div>
-                )}
+                </div>
               </div>
             </div>
-          ) : (
-<div className="bg-[#181c24] p-8 rounded-2xl border border-blue-500/20 shadow-[0_0_40px_rgba(59,130,246,0.15)] max-w-md w-full relative text-center">
-  <button 
-    onClick={() => {
-      setShowSuccessScreen(false);
-      window.location.reload();
-    }}
-    className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-gray-400 hover:text-white transition-colors"
-  >
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-    </svg>
-  </button>
-  <div className="flex flex-col items-center">
-    <div className="relative mb-8">
-      <div className="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center shadow-lg">
-        <FaCheckCircle className="text-green-500 text-5xl z-10" />
-      </div>
-      <div className="absolute inset-0 rounded-full bg-green-500 opacity-30 blur-2xl scale-125" />
-    </div>
-    <h2 className="text-3xl font-bold text-white mb-2">Verification Successful!</h2>
-    <p className="text-gray-300 mb-8 text-lg">Choose your preferred platform to continue:</p>
-    <div className="flex flex-col gap-4 w-full">
-      <a
-        href="https://wa.me/13044941901"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-xl py-4 text-lg transition-colors duration-200 shadow-md"
-      >
-        <FaWhatsapp className="text-2xl" />
-        Continue with WhatsApp
-      </a>
-    </div>
-    <p className="text-gray-400 text-sm mt-8">
-      Click on your preferred platform to join our community
-    </p>
-  </div>
-</div>
-          )}
 
           {/* Feature highlights */}
           {!showSuccessScreen && (
@@ -589,7 +272,7 @@ export default function Home() {
       </section>
 
       {/* Our Story Section */}
-      <section ref={storyRef} id="about-us" className="py-20 px-4 bg-[#0A0A0F]">
+      <section  id="about-us" className="py-20 px-4 bg-[#0A0A0F]">
         <div className="container mx-auto">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-white">
