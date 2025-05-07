@@ -142,10 +142,8 @@ export default function Footer() {
             <div className="text-xl font-bold text-blue-500 mb-4">18+ Only</div>
             <div className="max-w-2xl">
               <h3 className="text-xl font-bold mb-4 text-white">Important Notice</h3>
-              <p className="text-sm text-gray-400">
-                This platform is designed for entertainment purposes. Participate responsibly and be aware of your limits.
-                Success in previous games doesn't guarantee future outcomes.
-              </p>
+               <span className="font-bold">State-Specific Disclaimer:</span> Daily Fantasy Sports is not allowed in the following states: Andhra Pradesh, Assam, Nagaland, Orissa, Sikkim, and Telangana. Ensure you comply with your local laws before engaging.
+
             </div>
           </div>
 
